@@ -1,7 +1,7 @@
 package gr.uoa.di.m149.dto;
 
 
-public class UserDTO {
+public class UserRegister {
 
     private String username;
     private String password;

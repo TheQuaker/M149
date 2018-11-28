@@ -1,28 +1,39 @@
 package gr.uoa.di.m149.controller;
 
+import gr.uoa.di.m149.dto.SearchForm;
 import gr.uoa.di.m149.service.ChicagoRequestService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
 
 @Controller
-@RequestMapping("/requests/")
+@RequestMapping("/search/")
 public class RequestController {
-
-    private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     ChicagoRequestService service;
 
-    @GetMapping()
-    ModelAndView getChicagoRequests() {
-        ModelAndView modelAndView = new ModelAndView("chicagoRequest");
-        modelAndView.addObject("chicagoRequest", service.getChicagoRequestById(2));
-        return modelAndView;
+
+    @GetMapping("/getTypeTotalRequests")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @ApiOperation(value = "${RequestController.getTypeTotalRequests}")
+    @ApiResponses(value = {//
+            @ApiResponse(code = 400, message = "Something went wrong")})
+    ResponseEntity<?> getTypeTotalRequests(@ApiParam("Search TypeCount") @RequestBody SearchForm form) {
+        try {
+            return new ResponseEntity<>(service.getTypeTotalRequests(form.getFromDate(), form.getToDate()), HttpStatus.OK);
+        } catch (ParseException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
     }
 }

@@ -7,7 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@Table(name="chicago_requests", schema = "public")
+@Table(name = "chicago_requests")
+@SqlResultSetMapping(
+        name = "TypeTotalRequestsMapping",
+        classes = @ConstructorResult(
+        targetClass = TypeTotalRequests.class,
+        columns = {
+                @ColumnResult(name = "TypeOfRequest"),
+                @ColumnResult(name = "Count", type = Long.class)}))
 public class ChicagoRequest {
 
     @Transient
@@ -15,7 +22,7 @@ public class ChicagoRequest {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    int requestid;
+    long requestid;
     Date creationdate;
     String status;
     Date completiondate;
@@ -32,11 +39,11 @@ public class ChicagoRequest {
     BigDecimal longitude;
     String location;
 
-    public int getRequestid() {
+    public long getRequestid() {
         return requestid;
     }
 
-    public void setRequestid(int requestid) {
+    public void setRequestid(long requestid) {
         this.requestid = requestid;
     }
 
