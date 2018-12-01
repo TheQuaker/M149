@@ -1,13 +1,17 @@
-package gr.uoa.di.m149.domain;
+package gr.uoa.di.m149.tempdomain;
 
-public class TypeTotalRequests {
+public class ZipTopRequests {
 
-    String typeofrequest;
-    long count;
+    private int zipcode;
+    private String typeofrequest;
+    private long count;
 
-    public TypeTotalRequests(String typeofrequest, long count) {
-        this.typeofrequest = typeofrequest;
-        this.count = count;
+    public int getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
     }
 
     public String getTypeofrequest() {

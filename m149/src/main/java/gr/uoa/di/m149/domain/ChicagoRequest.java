@@ -8,13 +8,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "chicago_requests")
-@SqlResultSetMapping(
-        name = "TypeTotalRequestsMapping",
-        classes = @ConstructorResult(
-        targetClass = TypeTotalRequests.class,
-        columns = {
-                @ColumnResult(name = "TypeOfRequest"),
-                @ColumnResult(name = "Count", type = Long.class)}))
 public class ChicagoRequest {
 
     @Transient
@@ -22,22 +15,22 @@ public class ChicagoRequest {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    long requestid;
-    Date creationdate;
-    String status;
-    Date completiondate;
-    String servicerequestnumber;
-    String typeofservicerequest;
-    String streetaddress;
-    int zipcode;
-    BigDecimal xcoordinate;
-    BigDecimal ycoordinate;
-    int ward;
-    int policedistrict;
-    int communityarea;
-    BigDecimal latitude;
-    BigDecimal longitude;
-    String location;
+    private long requestid;
+    private Date creationdate;
+    private String status;
+    private Date completiondate;
+    private String servicerequestnumber;
+    private String typeofservicerequest;
+    private String streetaddress;
+    private int zipcode;
+    private BigDecimal xcoordinate;
+    private BigDecimal ycoordinate;
+    private int ward;
+    private int policedistrict;
+    private int communityarea;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
+    private String location;
 
     public long getRequestid() {
         return requestid;

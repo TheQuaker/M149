@@ -12,9 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
-
 @RestController
 @RequestMapping("/users")
 @Api(tags = "users")
@@ -25,7 +22,7 @@ public class UserController {
 
   private ModelMapper modelMapper = new ModelMapper();
 
-  @PostMapping("/signin")
+  @PostMapping(value = "/signin")
   @CrossOrigin(origins = "http://localhost:4200")
   @ApiOperation(value = "${UserController.signin}")
   @ApiResponses(value = {//

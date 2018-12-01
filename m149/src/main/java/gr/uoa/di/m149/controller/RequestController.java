@@ -36,4 +36,32 @@ public class RequestController {
         }
 
     }
+
+    @GetMapping("/getDayRequests")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @ApiOperation(value = "${RequestController.getDayRequest}")
+    @ApiResponses(value = {//
+            @ApiResponse(code = 400, message = "Something went wrong")})
+    ResponseEntity<?> getDayRequests(@ApiParam("Search DayCount") @RequestBody SearchForm form) {
+        try {
+            return new ResponseEntity<>(service.getRequestsPerDay(form.getRequest(), form.getFromDate(), form.getToDate()), HttpStatus.OK);
+        } catch (ParseException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @GetMapping("/getZipTopRequests")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @ApiOperation(value = "${RequestController.getZipTopRequests}")
+    @ApiResponses(value = {//
+            @ApiResponse(code = 400, message = "Something went wrong")})
+    ResponseEntity<?> getZipTopRequests(@ApiParam("Search ZipRequests") @RequestBody SearchForm form) {
+        try {
+            return new ResponseEntity<>(service.getTopRequestsPerZipCode(form.getAtDate()), HttpStatus.OK);
+        } catch (ParseException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+    }
 }
