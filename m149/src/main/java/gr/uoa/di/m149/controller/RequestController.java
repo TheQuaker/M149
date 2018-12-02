@@ -28,9 +28,9 @@ public class RequestController {
     @ApiOperation(value = "${RequestController.getTypeTotalRequests}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
-    ResponseEntity<?> getTypeTotalRequests(@ApiParam("Search TypeCount") @RequestBody SearchForm form) {
+    ResponseEntity<?> getTypeTotalRequests(@ApiParam("Search TypeCount") @RequestParam String fromDate, @RequestParam String toDate) {
         try {
-            return new ResponseEntity<>(service.getTypeTotalRequests(form.getFromDate(), form.getToDate()), HttpStatus.OK);
+            return new ResponseEntity<>(service.getTypeTotalRequests(fromDate, toDate), HttpStatus.OK);
         } catch (ParseException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -42,9 +42,9 @@ public class RequestController {
     @ApiOperation(value = "${RequestController.getDayRequest}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
-    ResponseEntity<?> getDayRequests(@ApiParam("Search DayCount") @RequestBody SearchForm form) {
+    ResponseEntity<?> getDayRequests(@RequestParam String request, @RequestParam String startTime, @RequestParam String endTime) {
         try {
-            return new ResponseEntity<>(service.getRequestsPerDay(form.getRequest(), form.getFromDate(), form.getToDate()), HttpStatus.OK);
+            return new ResponseEntity<>(service.getRequestsPerDay(request, startTime, endTime), HttpStatus.OK);
         } catch (ParseException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -56,9 +56,9 @@ public class RequestController {
     @ApiOperation(value = "${RequestController.getZipTopRequests}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
-    ResponseEntity<?> getZipTopRequests(@ApiParam("Search ZipRequests") @RequestBody SearchForm form) {
+    ResponseEntity<?> getZipTopRequests(@RequestParam String atDate) {
         try {
-            return new ResponseEntity<>(service.getTopRequestsPerZipCode(form.getAtDate()), HttpStatus.OK);
+            return new ResponseEntity<>(service.getTopRequestsPerZipCode(atDate), HttpStatus.OK);
         } catch (ParseException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

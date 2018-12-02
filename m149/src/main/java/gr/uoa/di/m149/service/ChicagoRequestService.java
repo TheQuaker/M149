@@ -56,8 +56,8 @@ public class ChicagoRequestService {
     }
 
     public List<DayRequests> getRequestsPerDay(String request, String from, String to) throws ParseException {
-        Time startTime = new Time(df.parse(from).getTime());
-        Time endTime = new Time(df.parse(to).getTime());
+        Time startTime = new Time(df2.parse(from).getTime());
+        Time endTime = new Time(df2.parse(to).getTime());
         StoredProcedureQuery query = manager.createStoredProcedureQuery("requestsPerDay");
         query.registerStoredProcedureParameter("request", String.class, ParameterMode.IN);
         query.registerStoredProcedureParameter("startTime", Time.class, ParameterMode.IN);
