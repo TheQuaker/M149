@@ -23,7 +23,7 @@ public class StoredProcedureRepositoryImpl implements StoredProcedureRepository{
     EntityManager manager;
 
     @Override
-    public List<TypeTotalRequests> findTypeTotalRequests(String from, String to, int page, int limit) throws ParseException {
+    public List<TypeTotalRequests> findTypeTotalRequests(String from, String to) throws ParseException {
         java.util.Date fromDate = df.parse(from);
         java.util.Date toDate = df.parse(to);
         StoredProcedureQuery query = manager.createStoredProcedureQuery("totalRequestsPerType");
@@ -37,7 +37,7 @@ public class StoredProcedureRepositoryImpl implements StoredProcedureRepository{
     }
 
     @Override
-    public List<DayRequests> findRequestsPerDay(String request, String from, String to, int page, int limit) throws ParseException {
+    public List<DayRequests> findRequestsPerDay(String request, String from, String to) throws ParseException {
         Time startTime = new Time(df2.parse(from).getTime());
         Time endTime = new Time(df2.parse(to).getTime());
         StoredProcedureQuery query = manager.createStoredProcedureQuery("requestsPerDay");
@@ -53,7 +53,7 @@ public class StoredProcedureRepositoryImpl implements StoredProcedureRepository{
     }
 
     @Override
-    public List<ZipTopRequests> findTopRequestsPerZipCode(String at, int page, int limit)  throws ParseException {
+    public List<ZipTopRequests> findTopRequestsPerZipCode(String at)  throws ParseException {
         Date atDate = df.parse(at);
         StoredProcedureQuery query = manager.createStoredProcedureQuery("topRequestPerZipCode");
         query.registerStoredProcedureParameter("atDate", java.sql.Date.class, ParameterMode.IN);

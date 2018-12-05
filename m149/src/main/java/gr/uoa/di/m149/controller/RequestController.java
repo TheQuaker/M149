@@ -27,10 +27,8 @@ public class RequestController {
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
     ResponseEntity<?> getRequestsByZipcodeAndStreet(@RequestParam(defaultValue = "-1") int zipcode,
-                                           @RequestParam(defaultValue = "") String streetaddress,
-                                           @RequestParam(defaultValue = "0") int page,
-                                           @RequestParam(defaultValue = "0") int limit) {
-            return new ResponseEntity<>(service.getChicagoRequestsByZipcodeAndSteedAddress(zipcode, streetaddress, page, limit), HttpStatus.OK);
+                                           @RequestParam(defaultValue = "") String streetaddress) {
+            return new ResponseEntity<>(service.getChicagoRequestsByZipcodeAndSteedAddress(zipcode, streetaddress), HttpStatus.OK);
     }
 
     @GetMapping("/getTypeTotalRequests")
@@ -39,11 +37,9 @@ public class RequestController {
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
     ResponseEntity<?> getTypeTotalRequests(@RequestParam String fromDate,
-                                           @RequestParam String toDate,
-                                           @RequestParam(defaultValue = "0") int page,
-                                           @RequestParam(defaultValue = "0") int limit) {
+                                           @RequestParam String toDate) {
         try {
-            return new ResponseEntity<>(service.getTypeTotalRequests(fromDate, toDate, page, limit), HttpStatus.OK);
+            return new ResponseEntity<>(service.getTypeTotalRequests(fromDate, toDate), HttpStatus.OK);
         } catch (ParseException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -56,11 +52,9 @@ public class RequestController {
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
     ResponseEntity<?> getDayRequests(@RequestParam String request, @RequestParam String startTime,
-                                     @RequestParam String endTime,
-                                     @RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "0") int limit) {
+                                     @RequestParam String endTime) {
         try {
-            return new ResponseEntity<>(service.getRequestsPerDay(request, startTime, endTime, page, limit), HttpStatus.OK);
+            return new ResponseEntity<>(service.getRequestsPerDay(request, startTime, endTime), HttpStatus.OK);
         } catch (ParseException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -72,14 +66,21 @@ public class RequestController {
     @ApiOperation(value = "${RequestController.getZipTopRequests}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
-    ResponseEntity<?> getZipTopRequests(@RequestParam String atDate,
-                                        @RequestParam(defaultValue = "0") Integer page,
-                                        @RequestParam(defaultValue = "0") Integer limit) {
+    ResponseEntity<?> getZipTopRequests(@RequestParam String atDate) {
         try {
-            return new ResponseEntity<>(service.getTopRequestsPerZipCode(atDate, page, limit), HttpStatus.OK);
+            return new ResponseEntity<>(service.getTopRequestsPerZipCode(atDate), HttpStatus.OK);
         } catch (ParseException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    @GetMapping("/getTypeOfRequests")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @ApiOperation(value = "${RequestController.getTypeOfRequests}")
+    @ApiResponses(value = {//
+            @ApiResponse(code = 400, message = "Something went wrong")})
+    ResponseEntity<?> getTypeOfRequests() {
+            return new ResponseEntity<>(service.getTypeOfRequests(), HttpStatus.OK);
     }
 }
