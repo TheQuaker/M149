@@ -22,12 +22,12 @@ public class ChicagoRequest {
     private String servicerequestnumber;
     private String typeofservicerequest;
     private String streetaddress;
-    private int zipcode;
+    private Integer zipcode;
     private BigDecimal xcoordinate;
     private BigDecimal ycoordinate;
-    private int ward;
-    private int policedistrict;
-    private int communityarea;
+    private Integer ward;
+    private Integer policedistrict;
+    private Integer communityarea;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private String location;
@@ -102,7 +102,7 @@ public class ChicagoRequest {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(Integer zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -126,7 +126,7 @@ public class ChicagoRequest {
         return ward;
     }
 
-    public void setWard(int ward) {
+    public void setWard(Integer ward) {
         this.ward = ward;
     }
 
@@ -134,15 +134,15 @@ public class ChicagoRequest {
         return policedistrict;
     }
 
-    public void setPolicedistrict(int policedistrict) {
+    public void setPolicedistrict(Integer policedistrict) {
         this.policedistrict = policedistrict;
-    }
+}
 
     public int getCommunityarea() {
         return communityarea;
     }
 
-    public void setCommunityarea(int communityarea) {
+    public void setCommunityarea(Integer communityarea) {
         this.communityarea = communityarea;
     }
 
