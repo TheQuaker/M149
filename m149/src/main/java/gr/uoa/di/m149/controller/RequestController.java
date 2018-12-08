@@ -22,7 +22,7 @@ public class RequestController {
 
 
     @GetMapping("/getRequestsByZipcodeAndStreet")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @ApiOperation(value = "${RequestController.getRequestsByZipcodeAndStreet}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
@@ -32,7 +32,7 @@ public class RequestController {
     }
 
     @GetMapping("/getTypeTotalRequests")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @ApiOperation(value = "${RequestController.getTypeTotalRequests}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
@@ -47,7 +47,7 @@ public class RequestController {
     }
 
     @GetMapping("/getDayRequests")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @ApiOperation(value = "${RequestController.getDayRequest}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
@@ -62,7 +62,7 @@ public class RequestController {
     }
 
     @GetMapping("/getZipTopRequests")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @ApiOperation(value = "${RequestController.getZipTopRequests}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})
@@ -76,7 +76,7 @@ public class RequestController {
     }
 
     @GetMapping("/getTypeOfRequests")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @ApiOperation(value = "${RequestController.getTypeOfRequests}")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong")})

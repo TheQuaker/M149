@@ -23,7 +23,7 @@ public class UserController {
   private ModelMapper modelMapper = new ModelMapper();
 
   @PostMapping(value = "/signin")
-  @CrossOrigin(origins = "http://localhost:4200")
+  //@CrossOrigin(origins = "http://localhost:4200")
   @ApiOperation(value = "${UserController.signin}")
   @ApiResponses(value = {//
       @ApiResponse(code = 400, message = "Something went wrong"), //
@@ -37,7 +37,7 @@ public class UserController {
   }
 
   @PostMapping(value = "/signup")
-  @CrossOrigin(origins = "http://localhost:4200")
+  //@CrossOrigin(origins = "http://localhost:4200")
   @ApiOperation(value = "${UserController.signup}")
   @ApiResponses(value = {//
       @ApiResponse(code = 400, message = "Something went wrong"), //
