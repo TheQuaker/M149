@@ -1,6 +1,7 @@
 package gr.uoa.di.m149.service;
 
 import gr.uoa.di.m149.domain.User;
+import gr.uoa.di.m149.domain.UserActivity;
 import gr.uoa.di.m149.dto.UserResponse;
 import gr.uoa.di.m149.exception.CustomException;
 import gr.uoa.di.m149.repository.UserRepository;
@@ -12,6 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 
 @Service
 public class UserService {
@@ -53,6 +57,19 @@ public class UserService {
     } else {
       throw new CustomException("Username is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
     }
+  }
+
+  public User whoami(HttpServletRequest req) {
+    return userRepository.findByUsername(jwtTokenProvider.getUsername(jwtTokenProvider.resolveToken(req)));
+  }
+
+  public void addActivity(User user, String query) {
+    UserActivity activity = new UserActivity();
+    activity.setQuery(query);
+    activity.setUser(user);
+    activity.setTimestamp(new Timestamp(System.currentTimeMillis()));
+    user.addActivity(activity);
+    userRepository.save(user);
   }
 
 }

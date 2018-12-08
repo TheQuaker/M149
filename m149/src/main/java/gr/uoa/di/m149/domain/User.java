@@ -11,7 +11,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long userid;
 
     @Size(min = 4, max = 255, message = "Minimum username length: 4 characters")
@@ -79,5 +79,13 @@ public class User {
 
     public void setUserActivities(Set<UserActivity> userActivities) {
         this.userActivities = userActivities;
+    }
+
+    public boolean addActivity(UserActivity activity) {
+        return userActivities.add(activity);
+    }
+
+    public boolean removeActivity(UserActivity activity) {
+        return userActivities.remove(activity);
     }
 }

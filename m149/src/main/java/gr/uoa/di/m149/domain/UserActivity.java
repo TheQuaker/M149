@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class UserActivity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
     private String query;
     private Timestamp timestamp;

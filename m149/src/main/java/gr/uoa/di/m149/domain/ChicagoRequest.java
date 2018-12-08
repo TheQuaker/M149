@@ -1,7 +1,5 @@
 package gr.uoa.di.m149.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -16,7 +14,7 @@ public class ChicagoRequest {
     private final DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long requestid;
     private Timestamp creationdate;
     private String status;
