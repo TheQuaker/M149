@@ -1,10 +1,12 @@
 package gr.uoa.di.m149.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Entity
 @Table(name = "chicago_requests")
@@ -14,11 +16,11 @@ public class ChicagoRequest {
     private final DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long requestid;
-    private Date creationdate;
+    private Timestamp creationdate;
     private String status;
-    private Date completiondate;
+    private Timestamp completiondate;
     private String servicerequestnumber;
     private String typeofservicerequest;
     private String streetaddress;
@@ -32,6 +34,7 @@ public class ChicagoRequest {
     private BigDecimal longitude;
     private String location;
 
+
     public long getRequestid() {
         return requestid;
     }
@@ -40,16 +43,19 @@ public class ChicagoRequest {
         this.requestid = requestid;
     }
 
-    public Date getCreationdate() {
+    public Timestamp getCreationdate() {
         return creationdate;
     }
 
     @Transient
     public String getCreationdateFormatted() {
-        return df.format(creationdate);
+        if(creationdate != null) {
+            return df.format(creationdate);
+        }
+        else return null;
     }
 
-    public void setCreationdate(Date creationdate) {
+    public void setCreationdate(Timestamp creationdate) {
         this.creationdate = creationdate;
     }
 
@@ -61,16 +67,19 @@ public class ChicagoRequest {
         this.status = status;
     }
 
-    public Date getCompletiondate() {
+    public Timestamp getCompletiondate() {
         return completiondate;
     }
 
     @Transient
     public String getCompletiondateFormatted() {
-        return df.format(completiondate);
+        if(completiondate != null) {
+            return df.format(completiondate);
+        }
+        else return null;
     }
 
-    public void setCompletiondate(Date completiondate) {
+    public void setCompletiondate(Timestamp completiondate) {
         this.completiondate = completiondate;
     }
 
@@ -169,4 +178,5 @@ public class ChicagoRequest {
     public void setLocation(String location) {
         this.location = location;
     }
+
 }

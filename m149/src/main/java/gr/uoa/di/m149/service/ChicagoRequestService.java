@@ -9,10 +9,8 @@ import gr.uoa.di.m149.tempdomain.TypeTotalRequests;
 import gr.uoa.di.m149.repository.ChicagoRequestRepository;
 import gr.uoa.di.m149.tempdomain.ZipTopRequests;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;

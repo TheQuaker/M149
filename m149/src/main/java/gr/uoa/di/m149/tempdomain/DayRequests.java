@@ -13,10 +13,10 @@ public class DayRequests {
     Timestamp date;
     long count;
 
+    public Timestamp getDate() { return date; }
+
     @Transient
-    public String getDate() {
-        return df.format(date);
-    }
+    public String getDateFormatted() { return df.format(date); }
 
     public void setDate(Timestamp date) {
         this.date = date;

@@ -11,11 +11,11 @@ public class AbandonedVehiclesInfo {
     private String licenseplate;
     private String vehiclemakemodel;
     private String vehiclecolor;
-    private double daysparked;
+    private Float daysparked;
 
-    @OneToOne
-    @JoinColumn(name = "requestid")
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId
+    @JoinColumn(name = "requestid", nullable = false)
     private ChicagoRequest cr;
 
     public long getRequestid() {
@@ -50,11 +50,11 @@ public class AbandonedVehiclesInfo {
         this.vehiclecolor = vehiclecolor;
     }
 
-    public double getDaysparked() {
+    public Float getDaysparked() {
         return daysparked;
     }
 
-    public void setDaysparked(double daysparked) {
+    public void setDaysparked(Float daysparked) {
         this.daysparked = daysparked;
     }
 

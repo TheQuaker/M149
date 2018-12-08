@@ -4,37 +4,41 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="user", schema = "public")
+@Table(name="users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    private long userid;
 
     @Size(min = 4, max = 255, message = "Minimum username length: 4 characters")
     @Column(unique = true, nullable = false)
-    String username;
+    private String username;
 
     @Size(min = 8, max = 255, message = "Minimum password length: 8 characters")
     @Column(nullable = false)
-    String password;
+    private String password;
 
     @Column(unique = true, nullable = false)
-    String email;
+    private String email;
 
     @Column(nullable = false)
-    String address;
+    private String address;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<UserActivity> userActivities;
 
     public static final List<Role> roles = new ArrayList<>();
 
-    public int getId() {
-        return id;
+    public long getUserid() {
+        return userid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserid(long userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -67,5 +71,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Set<UserActivity> getUserActivities() {
+        return userActivities;
+    }
+
+    public void setUserActivities(Set<UserActivity> userActivities) {
+        this.userActivities = userActivities;
     }
 }
