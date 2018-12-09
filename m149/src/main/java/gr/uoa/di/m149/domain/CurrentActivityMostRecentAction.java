@@ -3,13 +3,13 @@ package gr.uoa.di.m149.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CurrentActivity_MostRecentAction")
+@Table(name = "currentactivity_mostrecentaction")
 public class CurrentActivityMostRecentAction {
 
     @Id
     private long requestid;
-    private String currentActivity;
-    private String mostRecentAction;
+    private String currentactivity;
+    private String mostrecentaction;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requestid", nullable = false)
@@ -23,20 +23,20 @@ public class CurrentActivityMostRecentAction {
         this.requestid = requestid;
     }
 
-    public String getCurrentActivity() {
-        return currentActivity;
+    public String getCurrentactivity() {
+        return currentactivity;
     }
 
-    public void setCurrentActivity(String currentActivity) {
-        this.currentActivity = currentActivity;
+    public void setCurrentactivity(String currentactivity) {
+        this.currentactivity = currentactivity;
     }
 
-    public String getMostRecentAction() {
-        return mostRecentAction;
+    public String getMostrecentaction() {
+        return mostrecentaction;
     }
 
-    public void setMostRecentAction(String mostRecentAction) {
-        this.mostRecentAction = mostRecentAction;
+    public void setMostrecentaction(String mostrecentaction) {
+        this.mostrecentaction = mostrecentaction;
     }
 
     public ChicagoRequest getCr() {

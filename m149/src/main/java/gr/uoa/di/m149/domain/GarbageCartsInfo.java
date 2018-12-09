@@ -8,7 +8,7 @@ public class GarbageCartsInfo {
 
     @Id
     private long requestid;
-    private Float numberofBlackCartsDelivered;
+    private Float numberofblackcartsdelivered;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requestid", nullable = false)
@@ -22,12 +22,12 @@ public class GarbageCartsInfo {
         this.requestid = requestid;
     }
 
-    public Float getNumberofBlackCartsDelivered() {
-        return numberofBlackCartsDelivered;
+    public Float getNumberofblackcartsdelivered() {
+        return numberofblackcartsdelivered;
     }
 
-    public void setNumberofBlackCartsDelivered(Float numberofBlackCartsDelivered) {
-        this.numberofBlackCartsDelivered = numberofBlackCartsDelivered;
+    public void setNumberofblackcartsdelivered(Float numberofblackcartsdelivered) {
+        this.numberofblackcartsdelivered = numberofblackcartsdelivered;
     }
 
     public ChicagoRequest getCr() {

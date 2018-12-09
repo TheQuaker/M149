@@ -1,24 +1,21 @@
 package gr.uoa.di.m149.controller;
 
 import gr.uoa.di.m149.domain.User;
-import gr.uoa.di.m149.domain.UserActivity;
 import gr.uoa.di.m149.service.ChicagoRequestService;
 import gr.uoa.di.m149.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
 
-@Controller
+@RestController
 @RequestMapping("/search/")
 public class RequestController {
 

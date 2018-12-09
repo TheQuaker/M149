@@ -8,7 +8,7 @@ public class SanitationComplaintsInfo {
 
     @Id
     private long requestid;
-    private String natureofCodeViolation;
+    private String natureofcodeviolation;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requestid", nullable = false)
@@ -22,12 +22,12 @@ public class SanitationComplaintsInfo {
         this.requestid = requestid;
     }
 
-    public String getNatureofCodeViolation() {
-        return natureofCodeViolation;
+    public String getNatureofcodeviolation() {
+        return natureofcodeviolation;
     }
 
-    public void setNatureofCodeViolation(String natureofCodeViolation) {
-        this.natureofCodeViolation = natureofCodeViolation;
+    public void setNatureofcodeviolation(String natureofcodeviolation) {
+        this.natureofcodeviolation = natureofcodeviolation;
     }
 
     public ChicagoRequest getCr() {

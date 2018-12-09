@@ -8,9 +8,9 @@ public class RodentBaitingInfo {
 
     @Id
     private long requestid;
-    private Float premisesBaited;
-    private Integer premiseswithGarbage;
-    private Float premiseswithRats;
+    private Float premisesbaited;
+    private Integer premiseswithgarbage;
+    private Float premiseswithrats;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requestid", nullable = false)
@@ -24,28 +24,28 @@ public class RodentBaitingInfo {
         this.requestid = requestid;
     }
 
-    public Float getPremisesBaited() {
-        return premisesBaited;
+    public Float getPremisesbaited() {
+        return premisesbaited;
     }
 
-    public void setPremisesBaited(Float premisesBaited) {
-        this.premisesBaited = premisesBaited;
+    public void setPremisesbaited(Float premisesbaited) {
+        this.premisesbaited = premisesbaited;
     }
 
-    public Integer getPremiseswithGarbage() {
-        return premiseswithGarbage;
+    public Integer getPremiseswithgarbage() {
+        return premiseswithgarbage;
     }
 
-    public void setPremiseswithGarbage(Integer premiseswithGarbage) {
-        this.premiseswithGarbage = premiseswithGarbage;
+    public void setPremiseswithgarbage(Integer premiseswithgarbage) {
+        this.premiseswithgarbage = premiseswithgarbage;
     }
 
-    public Float getPremiseswithRats() {
-        return premiseswithRats;
+    public Float getPremiseswithrats() {
+        return premiseswithrats;
     }
 
-    public void setPremiseswithRats(Float premiseswithRats) {
-        this.premiseswithRats = premiseswithRats;
+    public void setPremiseswithrats(Float premiseswithrats) {
+        this.premiseswithrats = premiseswithrats;
     }
 
     public ChicagoRequest getCr() {

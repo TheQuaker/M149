@@ -15,4 +15,7 @@ public interface ChicagoRequestRepository extends CrudRepository<ChicagoRequest,
 
     @Query("select distinct typeofservicerequest from ChicagoRequest ")
     List<String> getTypeOfServiceRequests();
+
+    @Query("select count(requestid) from ChicagoRequest ")
+    long getLastId();
 }

@@ -18,7 +18,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/users")
-@Api(tags = "users")
 public class UserController {
 
   @Autowired
@@ -31,7 +30,7 @@ public class UserController {
   @ApiResponses(value = {//
       @ApiResponse(code = 400, message = "Something went wrong"), //
       @ApiResponse(code = 422, message = "Invalid username/password supplied")})
-  public ResponseEntity<?> login(@ApiParam("User signin") @RequestBody UserLogin user) {
+  public ResponseEntity<?> login(@RequestBody UserLogin user) {
       try {
         return new ResponseEntity(userService.signin(user.getUsername(), user.getPassword()), HttpStatus.OK);
       } catch (CustomException ex) {
@@ -46,7 +45,7 @@ public class UserController {
       @ApiResponse(code = 403, message = "Access denied"), //
       @ApiResponse(code = 422, message = "Username is already in use"), //
       @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-  public ResponseEntity<?> signup(@ApiParam("User signup") @RequestBody UserRegister user) {
+  public ResponseEntity<?> signup(@RequestBody UserRegister user) {
     try {
       return new ResponseEntity(userService.signup(modelMapper.map(user, User.class)), HttpStatus.OK);
     } catch (CustomException ex) {

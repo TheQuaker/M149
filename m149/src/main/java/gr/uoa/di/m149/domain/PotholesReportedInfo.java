@@ -8,7 +8,7 @@ public class PotholesReportedInfo {
 
     @Id
     private long requestid;
-    private Float potholesFilledOnBlock;
+    private Float potholesfilledonblock;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requestid", nullable = false)
@@ -22,12 +22,12 @@ public class PotholesReportedInfo {
         this.requestid = requestid;
     }
 
-    public Float getPotholesFilledOnBlock() {
-        return potholesFilledOnBlock;
+    public Float getPotholesfilledonblock() {
+        return potholesfilledonblock;
     }
 
-    public void setPotholesFilledOnBlock(Float potholesFilledOnBlock) {
-        this.potholesFilledOnBlock = potholesFilledOnBlock;
+    public void setPotholesfilledonblock(Float potholesfilledonblock) {
+        this.potholesfilledonblock = potholesfilledonblock;
     }
 
     public ChicagoRequest getCr() {

@@ -3,12 +3,12 @@ package gr.uoa.di.m149.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "SSA")
+@Table(name = "ssa")
 public class SSA {
 
     @Id
     private long requestid;
-    private String SSA;
+    private String ssa;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requestid", nullable = false)
@@ -22,12 +22,12 @@ public class SSA {
         this.requestid = requestid;
     }
 
-    public String getSSA() {
-        return SSA;
+    public String getSsa() {
+        return ssa;
     }
 
-    public void setSSA(String SSA) {
-        this.SSA = SSA;
+    public void setSsa(String ssa) {
+        this.ssa = ssa;
     }
 
     public ChicagoRequest getCr() {

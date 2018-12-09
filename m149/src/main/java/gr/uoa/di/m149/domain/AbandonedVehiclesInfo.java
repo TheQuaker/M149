@@ -14,7 +14,6 @@ public class AbandonedVehiclesInfo {
     private Float daysparked;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId
     @JoinColumn(name = "requestid", nullable = false)
     private ChicagoRequest cr;
 
