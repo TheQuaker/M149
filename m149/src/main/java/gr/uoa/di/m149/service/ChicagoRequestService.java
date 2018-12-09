@@ -51,6 +51,7 @@ public class ChicagoRequestService {
         chicagoRequest.setCreationdate(new Timestamp(System.currentTimeMillis()));
         chicagoRequest.setServicerequestnumber("CR-" + chicagoRequest.getRequestid());
         chicagoRequest.setStatus("Open");
+        chicagoRequest.setLocation("{'longitude': '" + chicagoRequest.getLongitude() + "', 'needs_recoding': False, 'latitude': '" + chicagoRequest.getLatitude() +"'}");
         chicagoRequestRepository.save(chicagoRequest);
         AbandonedVehiclesInfo abandonedVehiclesInfo = newIncident.getAbandonedVehiclesInfo();
         if(abandonedVehiclesInfo != null) {
@@ -89,12 +90,12 @@ public class ChicagoRequestService {
         }
         SSA ssa = newIncident.getSsa();
         if(ssa != null) {
-            ssa.setCr(chicagoRequest);
+            ssa.setRequestid(chicagoRequest.getRequestid());
             ssaRepository.save(ssa);
         }
         TreeDebrisTrimsInfo treeDebrisTrimsInfo = newIncident.getTreeDebrisTrimsInfo();
         if(treeDebrisTrimsInfo != null) {
-            treeDebrisTrimsInfo.setCr(chicagoRequest);
+            treeDebrisTrimsInfo.setRequestid(chicagoRequest.getRequestid());
             treeDebrisTrimsInfoRepository.save(treeDebrisTrimsInfo);
         }
         return true;
