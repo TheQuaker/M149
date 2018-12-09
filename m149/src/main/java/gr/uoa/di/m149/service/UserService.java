@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -70,6 +71,10 @@ public class UserService {
     activity.setTimestamp(new Timestamp(System.currentTimeMillis()));
     user.addActivity(activity);
     userRepository.save(user);
+  }
+
+  public Set<UserActivity> getUserActivities(User user) {
+    return user.getUserActivities();
   }
 
 }

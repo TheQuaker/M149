@@ -1,5 +1,7 @@
 package gr.uoa.di.m149.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -14,7 +16,7 @@ public class ChicagoRequest {
     private final DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long requestid;
     private Timestamp creationdate;
     private String status;
@@ -32,6 +34,33 @@ public class ChicagoRequest {
     private BigDecimal longitude;
     private String location;
 
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private AbandonedVehiclesInfo abandonedVehiclesInfo;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private CurrentActivityMostRecentAction currentActivityMostRecentAction;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private GarbageCartsInfo garbageCartsInfo;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private GraffitiRemovalInfo graffitiRemovalInfo;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private PotholesReportedInfo potholesReportedInfo;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private RodentBaitingInfo rodentBaitingInfo;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private SanitationComplaintsInfo sanitationComplaintsInfo;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    private SSA ssa;
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "cr")
+    @JsonIgnore
+    TreeDebrisTrimsInfo treeDebrisTrimsInfo;
 
     public long getRequestid() {
         return requestid;
@@ -177,4 +206,75 @@ public class ChicagoRequest {
         this.location = location;
     }
 
+    public AbandonedVehiclesInfo getAbandonedVehiclesInfo() {
+        return abandonedVehiclesInfo;
+    }
+
+    public void setAbandonedVehiclesInfo(AbandonedVehiclesInfo abandonedVehiclesInfo) {
+        this.abandonedVehiclesInfo = abandonedVehiclesInfo;
+    }
+
+    public CurrentActivityMostRecentAction getCurrentActivityMostRecentAction() {
+        return currentActivityMostRecentAction;
+    }
+
+    public void setCurrentActivityMostRecentAction(CurrentActivityMostRecentAction currentActivityMostRecentAction) {
+        this.currentActivityMostRecentAction = currentActivityMostRecentAction;
+    }
+
+    public GarbageCartsInfo getGarbageCartsInfo() {
+        return garbageCartsInfo;
+    }
+
+    public void setGarbageCartsInfo(GarbageCartsInfo garbageCartsInfo) {
+        this.garbageCartsInfo = garbageCartsInfo;
+    }
+
+    public GraffitiRemovalInfo getGraffitiRemovalInfo() {
+        return graffitiRemovalInfo;
+    }
+
+    public void setGraffitiRemovalInfo(GraffitiRemovalInfo graffitiRemovalInfo) {
+        this.graffitiRemovalInfo = graffitiRemovalInfo;
+    }
+
+    public PotholesReportedInfo getPotholesReportedInfo() {
+        return potholesReportedInfo;
+    }
+
+    public void setPotholesReportedInfo(PotholesReportedInfo potholesReportedInfo) {
+        this.potholesReportedInfo = potholesReportedInfo;
+    }
+
+    public RodentBaitingInfo getRodentBaitingInfo() {
+        return rodentBaitingInfo;
+    }
+
+    public void setRodentBaitingInfo(RodentBaitingInfo rodentBaitingInfo) {
+        this.rodentBaitingInfo = rodentBaitingInfo;
+    }
+
+    public SanitationComplaintsInfo getSanitationComplaintsInfo() {
+        return sanitationComplaintsInfo;
+    }
+
+    public void setSanitationComplaintsInfo(SanitationComplaintsInfo sanitationComplaintsInfo) {
+        this.sanitationComplaintsInfo = sanitationComplaintsInfo;
+    }
+
+    public SSA getSsa() {
+        return ssa;
+    }
+
+    public void setSsa(SSA ssa) {
+        this.ssa = ssa;
+    }
+
+    public TreeDebrisTrimsInfo getTreeDebrisTrimsInfo() {
+        return treeDebrisTrimsInfo;
+    }
+
+    public void setTreeDebrisTrimsInfo(TreeDebrisTrimsInfo treeDebrisTrimsInfo) {
+        this.treeDebrisTrimsInfo = treeDebrisTrimsInfo;
+    }
 }

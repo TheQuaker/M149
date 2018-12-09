@@ -1,5 +1,7 @@
 package gr.uoa.di.m149.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -8,13 +10,14 @@ import java.sql.Timestamp;
 public class UserActivity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String query;
     private Timestamp timestamp;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userid", nullable = false)
+    @JsonIgnore
     private User user;
 
     public long getId() {

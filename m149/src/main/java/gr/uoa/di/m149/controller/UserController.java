@@ -1,6 +1,7 @@
 package gr.uoa.di.m149.controller;
 
 import gr.uoa.di.m149.domain.User;
+import gr.uoa.di.m149.domain.UserActivity;
 import gr.uoa.di.m149.dto.UserLogin;
 import gr.uoa.di.m149.dto.UserRegister;
 import gr.uoa.di.m149.exception.CustomException;
@@ -11,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/users")
@@ -50,6 +54,15 @@ public class UserController {
     }
   }
 
+  @GetMapping("/getUserActivities")
+  @ApiOperation(value = "${RequestController.getUserActivities}")
+  @ApiResponses(value = {//
+          @ApiResponse(code = 400, message = "Something went wrong")})
+  ResponseEntity<?> getUserActivities(HttpServletRequest req) {
+    User user = userService.whoami(req);
+    Set<UserActivity> activities = userService.getUserActivities(user);
+    return new ResponseEntity<>(activities, HttpStatus.OK);
 
+  }
 
 }
