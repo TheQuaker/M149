@@ -54,13 +54,12 @@ public class ChicagoRequestService {
         chicagoRequestRepository.save(chicagoRequest);
         AbandonedVehiclesInfo abandonedVehiclesInfo = newIncident.getAbandonedVehiclesInfo();
         if(abandonedVehiclesInfo != null) {
-            abandonedVehiclesInfo.setCr(chicagoRequest);
             abandonedVehiclesInfo.setRequestid(chicagoRequest.getRequestid());
             abandonedVehicleInfoRepository.save(abandonedVehiclesInfo);
         }
         CurrentActivityMostRecentAction currentActivityMostRecentAction = newIncident.getCurrentActivityMostRecentAction();
         if(currentActivityMostRecentAction != null) {
-            currentActivityMostRecentAction.setCr(chicagoRequest);
+            currentActivityMostRecentAction.setRequestid(chicagoRequest.getRequestid());
             currentActivityMostRecentActionRepository.save(currentActivityMostRecentAction);
         }
         GarbageCartsInfo garbageCartsInfo = newIncident.getGarbageCartsInfo();
@@ -70,22 +69,22 @@ public class ChicagoRequestService {
         }
         GraffitiRemovalInfo graffitiRemovalInfo = newIncident.getGraffitiRemovalInfo();
         if(graffitiRemovalInfo != null) {
-            graffitiRemovalInfo.setCr(chicagoRequest);
+            graffitiRemovalInfo.setRequestid(chicagoRequest.getRequestid());
             graffitiRemovalInfoRepository.save(graffitiRemovalInfo);
         }
         PotholesReportedInfo potholesReportedInfo = newIncident.getPotholesReportedInfo();
         if(potholesReportedInfo != null) {
-            potholesReportedInfo.setCr(chicagoRequest);
+            potholesReportedInfo.setRequestid(chicagoRequest.getRequestid());
             potholesReportedInfoRepository.save(potholesReportedInfo);
         }
         RodentBaitingInfo rodentBaitingInfo = newIncident.getRodentBaitingInfo();
         if(rodentBaitingInfo != null) {
-            rodentBaitingInfo.setCr(chicagoRequest);
+            rodentBaitingInfo.setRequestid(chicagoRequest.getRequestid());
             rodentBaitingInfoRepository.save(rodentBaitingInfo);
         }
         SanitationComplaintsInfo sanitationComplaintsInfo = newIncident.getSanitationComplaintsInfo();
         if(sanitationComplaintsInfo != null) {
-            sanitationComplaintsInfo.setCr(chicagoRequest);
+            sanitationComplaintsInfo.setRequestid(chicagoRequest.getRequestid());
             sanitationComplaintsInfoRepository.save(sanitationComplaintsInfo);
         }
         SSA ssa = newIncident.getSsa();

@@ -37,7 +37,7 @@ public class UserService {
     try {
       authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
       String jwt = jwtTokenProvider.createToken(username,  User.roles);
-      UserResponse response = new UserResponse(userRepository.findByUsername(username), jwt);
+      UserResponse response = new UserResponse(userRepository.findByUsername(username), jwt, jwtTokenProvider.getValidityInMilliseconds());
       return response;
     } catch (AuthenticationException e) {
       throw new CustomException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -49,7 +49,7 @@ public class UserService {
       if(!userRepository.existsByEmail(user.getEmail())) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        UserResponse response = new UserResponse(user, jwtTokenProvider.createToken(user.getUsername(), User.roles));
+        UserResponse response = new UserResponse(user, jwtTokenProvider.createToken(user.getUsername(), User.roles), jwtTokenProvider.getValidityInMilliseconds());
         return response;
       }
       else {

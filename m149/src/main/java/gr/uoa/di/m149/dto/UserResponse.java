@@ -8,12 +8,14 @@ public class UserResponse {
     private String email;
     private String address;
     private String jwt;
+    private long mseconds;
 
-    public  UserResponse(User user, String jwt) {
+    public  UserResponse(User user, String jwt, long mseconds) {
         this.username = user.getUsername();
         this.email = user.getEmail();
         this.address = user.getAddress();
         this.jwt = jwt;
+        this.mseconds = mseconds;
     }
 
     public String getUsername() {
@@ -47,5 +49,13 @@ public class UserResponse {
 
     public void setJwt(String jwt) {
         this.jwt = jwt;
+    }
+
+    public long getMseconds() {
+        return mseconds;
+    }
+
+    public void setMseconds(long mseconds) {
+        this.mseconds = mseconds;
     }
 }
